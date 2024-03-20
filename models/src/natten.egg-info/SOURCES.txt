@@ -1,0 +1,15 @@
+LICENSE
+README.md
+setup.cfg
+setup.py
+src/natten/__init__.py
+src/natten/flops.py
+src/natten/functional.py
+src/natten/natten1d.py
+src/natten/natten2d.py
+src/natten/natten3d.py
+src/natten.egg-info/PKG-INFO
+src/natten.egg-info/SOURCES.txt
+src/natten.egg-info/dependency_links.txt
+src/natten.egg-info/requires.txt
+src/natten.egg-info/top_level.txt
