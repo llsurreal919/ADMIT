@@ -19,42 +19,21 @@ class BaseOptions():
         """Define the common options that are used in both training and test."""
         # basic parameters
         parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
-        parser.add_argument('--checkpoints_dir', type=str, default='Checkpoints_natten_adaptive', help='models are saved here')
+        parser.add_argument('--checkpoints_dir', type=str, default='Checkpoints', help='models are saved here')
         parser.add_argument('--checkpoint', type=str, default='', help='model to load')
-        parser.add_argument('--test_dir', type=str, default='Pretrained_12', help='test dir')
+        parser.add_argument('--test_dir', type=str, default='test', help='test dir')
 
         # model parameters
-        parser.add_argument('--model', type=str, default='DynaAWGN', help='chooses which model to use. [DynaAWGN]')
-        parser.add_argument('--band', type=int, default=8, help='# of channel bindwith, 0->0.25, 1->0.3125, 2->0.375, 3->0.4375, 64->0.5') # 增加
-        # parser.add_argument('--CD_Adaptive', action='store_true', help='if specified, channel decoder SNR adaptive') # 增加
-
-
-        parser.add_argument('--input_nc', type=int, default=3, help='# of input image channels: 3 for RGB and 1 for grayscale')
-        parser.add_argument('--output_nc', type=int, default=3, help='# of output image channels: 3 for RGB and 1 for grayscale')
-        parser.add_argument('--ngf', type=int, default=64, help='# of gen filters in the last conv layer')
-        parser.add_argument('--ndf', type=int, default=64, help='# of discrim filters in the first conv layer')
-        parser.add_argument('--max_ngf', type=int, default=255, help='maximal # of gen filters in the last conv layer')
-        parser.add_argument('--norm', type=str, default='batch', help='instance normalization or batch normalization [instance | batch | none]')
+        parser.add_argument('--model', type=str, default='MDJSCC', help='chooses which model to use. [MDJSCC]')
+        parser.add_argument('--band', type=int, default=128, help='# of channel bindwith') # 增加
         parser.add_argument('--init_type', type=str, default='normal', help='network initialization [normal | xavier | kaiming | orthogonal]')
         parser.add_argument('--init_gain', type=float, default=0.02, help='scaling factor for normal, xavier and orthogonal.')
-        parser.add_argument('--n_downsample', type=int, default=2, help='number of downsample layers')
-        parser.add_argument('--n_blocks', type=int, default=2, help='number of residual blocks')
-        parser.add_argument('--C_channel', type=int, default=16, help='number of channels of the encoder output')
-        parser.add_argument('--G_n', type=int, default=4, help='number of non-selective groups')
-        parser.add_argument('--G_s', type=int, default=4, help='number of selective groups')
-        parser.add_argument('--select', type=str, default='hard', help='using hard or soft mask [hard | soft]')
         parser.add_argument('--SNR_MAX', type=int, default=20, help='maximum SNR')
         parser.add_argument('--SNR_MIN', type=int, default=0, help='minimum SNR')
-        parser.add_argument('--lambda_reward', type=float, default=1.5e-3, help='weight for efficiency loss')
-        parser.add_argument('--lambda_L2', type=float, default=1, help='weight for MSE loss')
-
-        # dataset parameters
-        parser.add_argument('--batch_size', type=int, default=128, help='input batch size')
-        parser.add_argument('--max_dataset_size', type=int, default=float("inf"), help='Maximum number of samples allowed per dataset. If the dataset directory contains more than max_dataset_size, only a subset is loaded.')
-        
+        parser.add_argument('--batch_size', type=int, default=16, help='batch size')
+    
         # additional parameters
         parser.add_argument('--epoch', type=str, default='latest', help='which epoch to load? set to latest to use latest cached model')
-        parser.add_argument('--load_iter', type=int, default='0', help='which iteration to load? if load_iter > 0, the code will load models by iter_[load_iter]; otherwise, the code will load models by [epoch]')
         parser.add_argument('--verbose', action='store_true', help='if specified, print more debugging information')
         parser.add_argument('--suffix', default='', type=str, help='customized suffix: opt.name = opt.name + suffix: e.g., {model}_{netG}_size{load_size}')
         self.initialized = True

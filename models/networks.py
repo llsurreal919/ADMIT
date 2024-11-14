@@ -9,7 +9,7 @@ import numpy as np
 from models.layers_natten import *
 # from .elan_block import conv, deconv, ELAB
 # from .layers import RSTB
-from .swin import PatchEmbed, PatchMerging, PatchSplitting, BasicLayer
+
 
 
 class Identity(nn.Module):
@@ -282,6 +282,7 @@ class Source_Decoder(nn.Module):
         super().__init__()
 
         last = []
+        first = []
 
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, sum(depths))]
 
@@ -334,8 +335,14 @@ class Source_Decoder(nn.Module):
         self.layers_7 = deconv(64, 3, kernel_size=3, stride=2)
         
         last += [nn.Sigmoid()]
-        
+        first += [nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1, bias=True),
+                      nn.BatchNorm2d(256), nn.ReLU(True),
+                      nn.Sigmoid()]
+
+        self.first = nn.Sequential(*first)
+
         self.last = nn.Sequential(*last)
+        
         
         self.mod1 = AFF(256)
         self.mod2 = AFF(192)
@@ -343,9 +350,10 @@ class Source_Decoder(nn.Module):
         self.mod4 = AFF(64)
 
     def forward(self, x, SNR):
+        x = self.first(x) * x + x
         x = self.layers_0(x)  #256
         x = self.mod1(x, SNR) #256
-
+    
         x = self.layers_1(x)
         x = self.layers_2(x)  #192
         x = self.mod2(x, SNR) #192
@@ -353,11 +361,11 @@ class Source_Decoder(nn.Module):
         x = self.layers_3(x)
         x = self.layers_4(x)  #128
         x = self.mod3(x, SNR) #128
-        
+
         x = self.layers_5(x)
         x = self.layers_6(x)  #64
         x = self.mod4(x, SNR) #64
-        
+ 
         x = self.layers_7(x)
         x = 2 * self.last(x) - 1
         return x
@@ -408,26 +416,7 @@ class AQL(nn.Module):
         x = torch.sigmoid(self.conv4(x))
         x = identity - identity * x
         x = self.last(x)
-        return x
-    
-# class BCM(nn.Module):
-#     def __init__(self, in_channel):
-#         super(BCM, self).__init__()
-#         self.conv1 = nn.Conv2d(in_channel, 192, kernel_size=1, stride=1, padding=0)
-#         self.conv2 = nn.Conv2d(192, 192, kernel_size=5, stride=1, padding=2, groups=192)
-#         self.conv3 = nn.Conv2d(192, 192, kernel_size=5, stride=1, padding=2, groups=192)
-#         self.conv4 = nn.Conv2d(192, in_channel, kernel_size=1, stride=1, padding=0)
-#         self.first = nn.ConvTranspose2d(in_channel, 256, kernel_size=3, stride=1, output_padding=0, padding=1)
-    
-#     def forward(self, x):
-#         identity = x
-#         x = F.leaky_relu(self.conv1(x))
-#         x = self.conv2(x)
-#         x = self.conv3(x)
-#         x = F.relu(self.conv4(x))
-#         x = identity + identity * x
-#         x = self.first(x)
-#         return x 
+        return x  
 
 class BCM(nn.Module):
     def __init__(self, in_channel):
