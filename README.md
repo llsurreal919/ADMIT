@@ -15,7 +15,7 @@ This is the code for paper "High Efficiency Deep Joint Source-Channel Coding for
 ```
 git clone https://github.com/llsurreal919/MDJSCCpip 
 
-install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Dataset
