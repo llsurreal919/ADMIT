@@ -12,9 +12,9 @@ This is the code for paper "High Efficiency Deep Joint Source-Channel Coding for
 
 # Usage
 
-git clone https://github.com/llsurreal919/MDJSCC
+'''git clone https://github.com/llsurreal919/MDJSCC'''
 
-pip install -r requirements.txt
+'''pip install -r requirements.txt'''
 
 ## Dataset
 
