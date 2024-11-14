@@ -12,6 +12,10 @@ This is the code for paper "High Efficiency Deep Joint Source-Channel Coding for
 
 # Usage
 
+git clone https://github.com/llsurreal919/MDJSCC
+
+pip install -r requirements.txt
+
 ## Dataset
 
 The test dataset can be downloaded from [百度网盘：8888](https://pan.baidu.com/s/1Ki0AuUUsVu4W17eBtpNu6w?pwd=8888) .
