@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 ### Dataset
 
-The test dataset can be downloaded from [百度网盘：8888](https://pan.baidu.com/s/1Ki0AuUUsVu4W17eBtpNu6w?pwd=8888) .
+The test dataset can be downloaded from [kaggle](https://www.kaggle.com/datasets/drxinchengzhu/kodak24) .
 
 The training dataset can be downloaded from [DIV2K](https://data.vision.ee.ethz.ch/cvl/DIV2K/) .
 
