@@ -48,30 +48,6 @@ Example usage:
 
 The style of coding is borrowed from [Dynamic_JSCC](https://github.com/mingyuyng/Dynamic_JSCC) and partially built upon the [Neighborhood Attention Transformer](https://github.com/SHI-Labs/Neighborhood-Attention-Transformer). We thank the authors for sharing their codes.
 
-# Related work
-> He Ziyang, Huang Minfeng, Luo Lei, Yang Xu and Zhu Ce, "Efficient Deep Visual and Inertial Odometry with Adaptive Visual Modality Selection"
-```
-  @article{he2024towards,
-    title={Towards real-time practical image compression with lightweight attention},
-    author={He, Ziyang and Huang, Minfeng and Luo, Lei and Yang, Xu and Zhu, Ce},
-    journal={Expert Systems with Applications},
-    volume={252},
-    pages={124142},
-    year={2024},
-    publisher={Elsevier}
-  }
-```
-> Cheng Baoping, Luo Lei, He Ziyang, Zhu Ce and Tao Xiaoming, "Perceptual point cloud qality assessment for immersive metaverse experience"
-```
-  @article{cheng2024perceptual,
-    title={Perceptual point cloud qality assessment for immersive metaverse experience},
-    author={Cheng, Baoping and Luo, Lei and He, Ziyang and Zhu, Ce and Tao, Xiaoming},
-    journal={Digital Communications and Networks},
-    year={2024},
-    publisher={Elsevier}
-  }
-```
-
 # Contact
 
 If you have any question, please contact me (He Ziyang) via s210131061@stu.cqupt.edu.cn.
