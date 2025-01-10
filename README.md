@@ -50,4 +50,4 @@ The style of coding is borrowed from [Dynamic_JSCC](https://github.com/mingyuyng
 
 # Contact
 
-If you have any question, please contact me (He Ziyang) via heziyang@bupt.ecu.cn.
+If you have any question, please contact me (He Ziyang) via heziyang@bupt.edu.cn.
