@@ -21,7 +21,7 @@ Deep learning based joint source-channel coding (DJSCC) has recently made signif
 ## Requirements
 
 ```
-git clone https://github.com/llsurreal919/MDJSCC
+git clone https://github.com/llsurreal919/ADMIT
 
 pip install -r requirements.txt
 ```
